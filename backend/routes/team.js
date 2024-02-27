@@ -36,10 +36,17 @@ team_router.get("/team/all", async (req, res) => {
     await Team.find()
       .populate("player")
       .then((team) => {
-        res.status(200).json({
-          success: true,
-          team: team,
-        });
+        if (team) {
+          res.status(200).json({
+            success: true,
+            team: team,
+          });
+        } else {
+          res.status(200).json({
+            success: false,
+            message: "Team can not be found",
+          });
+        }
       });
   } catch (error) {
     return res.status(400).json({
