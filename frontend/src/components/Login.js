@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import qs from "qs";
-import { Form, Button, Container, Card } from "react-bootstrap";
+import { Form, Button, Container, Card, Alert } from "react-bootstrap";
 
 const Login = () => {
   const [inputData, setInputData] = useState({
@@ -10,6 +10,7 @@ const Login = () => {
     password: "",
   });
 
+  const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
   //Clear the session storage
@@ -36,8 +37,9 @@ const Login = () => {
         if (response.data.success) {
           sessionStorage.setItem("user_id", response.data.user._id);
           navigate("/home");
+          window.location.reload();
         } else {
-          console.log(response.data);
+          setMessage(response.data.message);
         }
       })
       .catch((err) => console.log(err));
@@ -79,6 +81,11 @@ const Login = () => {
                 Login
               </Button>
             </Form>
+            {message && (
+              <Alert className="mt-3" variant="danger">
+                {message}
+              </Alert>
+            )}
           </Card.Body>
         </Card>
       </Container>
