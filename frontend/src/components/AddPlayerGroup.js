@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Form, Button } from "react-bootstrap";
 
 const AddPlayerGroup = () => {
+  const [teams, setTeams] = useState([]);
+
+  //Calling all the teams and players
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/team/all")
+      .then((response) => {
+        console.log(response.data.team);
+        setTeams(response.data.team);
+      })
+      .catch((err) => console.log(err));
+  }, []);
   return (
     <Form>
       <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -19,10 +32,11 @@ const AddPlayerGroup = () => {
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Team</Form.Label>
         <Form.Select aria-label="Default select example">
-          <option>Open this select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+          {teams.length < 1 ? (
+            <option>No teams</option>
+          ) : (
+            teams.map((team, i) => <option key={i}>{team.name}</option>)
+          )}
         </Form.Select>
       </Form.Group>
       <Button variant="primary" type="submit">
