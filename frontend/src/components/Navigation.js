@@ -13,7 +13,7 @@ const Navigation = () => {
         className="mb-3"
         justify
       >
-        <Tab eventKey="home" title="Teams">
+        <Tab eventKey="profile" title="Teams">
           <Container className="mt-4">
             In this segment, you have the ability to both add new teams and
             seamlessly view existing teams.
@@ -41,7 +41,7 @@ const Navigation = () => {
           </Container>
           {/* Existing team section Ends*/}
         </Tab>
-        <Tab eventKey="profile" title="Players">
+        <Tab eventKey="home" title="Players">
           <Container className="mt-4">
             In this segment, you have the ability to add new players.
           </Container>
