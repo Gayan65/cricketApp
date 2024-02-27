@@ -30,4 +30,23 @@ team_router.post("/team/create", async (req, res) => {
   }
 });
 
+//Get all teams with their players
+team_router.get("/team/all", async (req, res) => {
+  try {
+    await Team.find()
+      .populate("player")
+      .then((team) => {
+        res.status(200).json({
+          success: true,
+          team: team,
+        });
+      });
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      error: error.message,
+    });
+  }
+});
+
 export default team_router;

@@ -6,6 +6,7 @@ import bodyParser from "body-parser";
 const player_router = express();
 player_router.use(bodyParser.urlencoded({ extended: false }));
 
+//Create Player
 player_router.post("/player/create", async (req, res) => {
   const { name, mobile, batch, team } = req.body;
   const player = new Player({
@@ -41,6 +42,23 @@ player_router.post("/player/create", async (req, res) => {
     return res.status(400).json({
       success: false,
       message: error.message,
+    });
+  }
+});
+
+//Get all players
+player_router.get("/player/all", async (req, res) => {
+  try {
+    await Player.find().then((players) => {
+      res.status(200).json({
+        success: true,
+        players: players,
+      });
+    });
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      error: error.message,
     });
   }
 });
