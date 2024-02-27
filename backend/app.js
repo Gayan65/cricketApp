@@ -1,12 +1,14 @@
 import "dotenv/config";
 import express from "express";
 import mongoose from "mongoose";
+import cors from "cors";
 import user_route from "./routes/user.js";
 
 const app = express();
 const port = process.env.PORT;
 const url = process.env.DBURL;
 
+app.use(cors());
 app.use(user_route);
 
 await mongoose.connect(url).then(() => {
