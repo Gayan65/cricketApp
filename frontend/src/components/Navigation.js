@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Tab, Tabs, Card } from "react-bootstrap";
 import AddTeamGroup from "./AddTeamGroup";
 import ExistingTeamGroup from "./ExistingTeamGroup";
+import AddPlayerGroup from "./AddPlayerGroup";
 
 const Navigation = () => {
   return (
@@ -41,7 +42,20 @@ const Navigation = () => {
           {/* Existing team section Ends*/}
         </Tab>
         <Tab eventKey="profile" title="Players">
-          Tab content for Profile
+          <Container className="mt-4">
+            In this segment, you have the ability to add new players.
+          </Container>
+
+          {/* Add player section start*/}
+          <Container className="mt-4">
+            <Card>
+              <Card.Body>
+                <Card.Title>Add Player Section</Card.Title>
+                <AddPlayerGroup />
+              </Card.Body>
+            </Card>
+          </Container>
+          {/* Add player section Ends*/}
         </Tab>
       </Tabs>
     </Container>
