@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 import qs from "qs";
-import { Form, Button, Alert } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 
 const AddTeamGroup = () => {
   const [inputData, setInputData] = useState({
     name: "",
     register: false,
   });
-
-  const [message, setMessage] = useState("");
 
   //Handle input elements
   const handleInputChange = (event) => {
