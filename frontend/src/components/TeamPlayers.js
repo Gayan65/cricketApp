@@ -32,14 +32,20 @@ const TeamPlayers = () => {
       .catch((err) => console.log(err));
   };
 
+  let user = sessionStorage.getItem("user_id");
+
   //Calling all the teams and players
   useEffect(() => {
-    axios
-      .get(`http://localhost:4000/team/${state}`)
-      .then((response) => {
-        setTeam(response.data.team[0]);
-      })
-      .catch((err) => console.log(err));
+    if (user === "" || user === null) {
+      navigate("/");
+    } else {
+      axios
+        .get(`http://localhost:4000/team/${state}`)
+        .then((response) => {
+          setTeam(response.data.team[0]);
+        })
+        .catch((err) => console.log(err));
+    }
   }, []);
   return (
     <Container className="mt-5">
