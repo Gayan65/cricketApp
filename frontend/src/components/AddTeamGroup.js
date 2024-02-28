@@ -51,6 +51,7 @@ const AddTeamGroup = () => {
           placeholder="Team name here.."
           onChange={handleInputChange}
           name="name"
+          required
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">

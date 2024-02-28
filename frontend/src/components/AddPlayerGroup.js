@@ -40,6 +40,7 @@ const AddPlayerGroup = () => {
     await axios
       .post("http://localhost:4000/player/create", data)
       .then((response) => {
+        window.location.reload();
         alert(response.data.message);
       })
       .catch((err) => alert("Team is not selected!"));
@@ -102,15 +103,13 @@ const AddPlayerGroup = () => {
           onChange={handleTeamChange}
           name="team"
         >
-          {teams.length < 1 ? (
-            <option>No teams</option>
-          ) : (
+          <option>No teams</option>
+          {teams.length > 0 &&
             teams.map((team, i) => (
               <option value={team._id} key={i}>
                 {team.name}
               </option>
-            ))
-          )}
+            ))}
         </Form.Select>
       </Form.Group>
       <Button variant="primary" type="submit">

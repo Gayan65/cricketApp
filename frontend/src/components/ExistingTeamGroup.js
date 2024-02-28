@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { Badge, ListGroup } from "react-bootstrap";
 
@@ -25,7 +26,9 @@ const ExistingTeamGroup = () => {
             key={i}
           >
             <div className="ms-2 me-auto">
-              <div className="fw-bold">{team.name}</div>
+              <div className="fw-bold">
+                <Link to={"/team"}>{team.name}</Link>
+              </div>
               {team.register ? "Registered" : "Not Registered"}
             </div>
             <Badge bg="primary" pill>
