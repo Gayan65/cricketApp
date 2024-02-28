@@ -4,6 +4,7 @@ import Nav from "./components/Nav";
 import Login from "./components/Login";
 import TeamPlayers from "./components/TeamPlayers";
 import EditPlayer from "./components/EditPlayer";
+import AllTeam from "./components/AllTeam";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/home" element={<Home />}></Route>
           <Route path="/team" element={<TeamPlayers />}></Route>
           <Route path="/player/edit" element={<EditPlayer />}></Route>
+          <Route path="/teams" element={<AllTeam />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

@@ -118,7 +118,6 @@ team_router.delete("/delete/team/:id", (req, res) => {
 //Update a team
 team_router.patch("/team/update/:id", async (req, res) => {
   const id = req.params.id;
-  console.log(req.body);
   try {
     await Team.findByIdAndUpdate(id, { $set: req.body }, { new: true }).then(
       (newTeam) => {

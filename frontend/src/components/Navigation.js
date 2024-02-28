@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Container, Tab, Tabs, Card } from "react-bootstrap";
 import AddTeamGroup from "./AddTeamGroup";
 import ExistingTeamGroup from "./ExistingTeamGroup";
@@ -56,6 +57,25 @@ const Navigation = () => {
             </Card>
           </Container>
           {/* Add player section Ends*/}
+        </Tab>
+        <Tab eventKey="public" title="Public">
+          <Container className="mt-4">
+            In this segment, you have the ability to add new players.
+          </Container>
+
+          {/* Public section start*/}
+          <Container className="mt-4">
+            <Card>
+              <Card.Body>
+                <Card.Title>Public section</Card.Title>
+                <Card.Text>
+                  This section you can generate all teams report
+                </Card.Text>
+                <Link to={"/teams"}>Generate</Link>
+              </Card.Body>
+            </Card>
+          </Container>
+          {/* Public section Ends*/}
         </Tab>
       </Tabs>
     </Container>
