@@ -16,7 +16,7 @@ const Nav = () => {
   return (
     <Navbar bg="primary" data-bs-theme="light">
       <Container>
-        <Navbar.Brand href="#home">PCC CRICKET BASHERS</Navbar.Brand>
+        <Navbar.Brand href="/home">PCC CRICKET BASHERS</Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           {loggedIn && (

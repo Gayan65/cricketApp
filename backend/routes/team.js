@@ -56,4 +56,31 @@ team_router.get("/team/all", async (req, res) => {
   }
 });
 
+//Get a team and players
+team_router.get("/team/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    await Team.find({ _id: id })
+      .populate("player")
+      .then((team) => {
+        if (team) {
+          res.status(200).json({
+            success: true,
+            team: team,
+          });
+        } else {
+          res.status(200).json({
+            success: false,
+            message: "Team can not be found",
+          });
+        }
+      });
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      error: error.message,
+    });
+  }
+});
+
 export default team_router;
