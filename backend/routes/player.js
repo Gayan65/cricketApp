@@ -63,4 +63,22 @@ player_router.get("/player/all", async (req, res) => {
   }
 });
 
+//Delete a player
+player_router.delete("/player/delete/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    await Player.findByIdAndDelete(id).then((deletedPlayer) => {
+      res.status(200).json({
+        success: true,
+        message: `${deletedPlayer.name}, deleted successfully `,
+      });
+    });
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      error: error.message,
+    });
+  }
+});
+
 export default player_router;

@@ -83,4 +83,36 @@ team_router.get("/team/:id", async (req, res) => {
   }
 });
 
+// Delete a Team
+team_router.delete("/delete/team/:id", (req, res) => {
+  const teamId = req.params.id;
+  try {
+    Team.findByIdAndDelete(teamId)
+      .populate("player")
+      .then(async (deletedTeam) => {
+        if (deletedTeam) {
+          //Delete the respective players
+          if (deletedTeam.player.length > 0) {
+            await Player.deleteMany({ team: teamId });
+          }
+          return res.status(200).json({
+            success: true,
+            message: `${deletedTeam.name} deleted successfully !`,
+            team: deletedTeam,
+          });
+        } else {
+          return res.status(200).json({
+            success: false,
+            message: "Team can not be found",
+          });
+        }
+      });
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+});
+
 export default team_router;
