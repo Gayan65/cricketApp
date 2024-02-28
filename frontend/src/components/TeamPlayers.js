@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Table, Card, Container, Button, Accordion } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const TeamPlayers = () => {
@@ -69,7 +70,9 @@ const TeamPlayers = () => {
                     <td>{teamPlayer.mobile}</td>
                     <td>{teamPlayer.batch}</td>
                     <td>
-                      <Button variant="warning">Edit</Button>
+                      <Link to={"/player/edit"} state={teamPlayer._id}>
+                        Edit
+                      </Link>
                     </td>
                     <td>
                       <Button

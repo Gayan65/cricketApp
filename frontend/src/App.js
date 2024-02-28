@@ -3,6 +3,7 @@ import Home from "./components/Home";
 import Nav from "./components/Nav";
 import Login from "./components/Login";
 import TeamPlayers from "./components/TeamPlayers";
+import EditPlayer from "./components/EditPlayer";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<Login />}></Route>
           <Route path="/home" element={<Home />}></Route>
           <Route path="/team" element={<TeamPlayers />}></Route>
+          <Route path="/player/edit" element={<EditPlayer />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

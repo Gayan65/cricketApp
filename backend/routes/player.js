@@ -81,4 +81,42 @@ player_router.delete("/player/delete/:id", async (req, res) => {
   }
 });
 
+//Get one players
+player_router.get("/player/find/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    await Player.findOne({ _id: id }).then((player) => {
+      res.status(200).json({
+        success: true,
+        player: player,
+      });
+    });
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      error: error.message,
+    });
+  }
+});
+
+//Update one players
+player_router.patch("/player/update/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    await Player.findByIdAndUpdate(id, { $set: req.body }, { new: true }).then(
+      (newPlayer) => {
+        res.status(200).json({
+          success: true,
+          player: newPlayer,
+        });
+      }
+    );
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      error: error.message,
+    });
+  }
+});
+
 export default player_router;
