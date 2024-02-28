@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Table, Card, Container, Button, Accordion } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import qs from "qs";
 
 const TeamPlayers = () => {
   const navigate = useNavigate();
@@ -33,6 +34,18 @@ const TeamPlayers = () => {
   };
 
   let user = sessionStorage.getItem("user_id");
+
+  const handleUpdateTeam = (teamId) => {
+    const data = qs.stringify({
+      register: true,
+    });
+    axios
+      .patch(`http://localhost:4000/team/update/${teamId}`, data)
+      .then((response) => {
+        setTeam((prevTeam) => ({ ...prevTeam, register: true }));
+      })
+      .catch((err) => console.log(err));
+  };
 
   //Calling all the teams and players
   useEffect(() => {
@@ -108,6 +121,24 @@ const TeamPlayers = () => {
                   className="mt-3"
                 >
                   Delete
+                </Button>
+              )}
+            </div>
+          </Accordion.Body>
+        </Accordion.Item>
+        <Accordion.Item eventKey="1">
+          <Accordion.Header>Subscription</Accordion.Header>
+          <Accordion.Body>
+            You can edit subscription status from here, If the "Paid" button
+            visible.
+            <div>
+              {team && team.register === false && (
+                <Button
+                  variant="outline-success"
+                  onClick={() => handleUpdateTeam(team._id)}
+                  className="mt-3"
+                >
+                  Paid
                 </Button>
               )}
             </div>

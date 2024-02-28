@@ -115,4 +115,25 @@ team_router.delete("/delete/team/:id", (req, res) => {
   }
 });
 
+//Update a team
+team_router.patch("/team/update/:id", async (req, res) => {
+  const id = req.params.id;
+  console.log(req.body);
+  try {
+    await Team.findByIdAndUpdate(id, { $set: req.body }, { new: true }).then(
+      (newTeam) => {
+        res.status(200).json({
+          success: true,
+          team: newTeam,
+        });
+      }
+    );
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      error: error.message,
+    });
+  }
+});
+
 export default team_router;
