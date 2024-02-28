@@ -11,7 +11,6 @@ const ExistingTeamGroup = () => {
     axios
       .get("http://localhost:4000/team/all")
       .then((response) => {
-        console.log(response.data.team);
         setTeams(response.data.team);
       })
       .catch((err) => console.log(err));
@@ -27,7 +26,9 @@ const ExistingTeamGroup = () => {
           >
             <div className="ms-2 me-auto">
               <div className="fw-bold">
-                <Link to={"/team"}>{team.name}</Link>
+                <Link to={"/team"} state={team._id}>
+                  {team.name}
+                </Link>
               </div>
               {team.register ? "Registered" : "Not Registered"}
             </div>

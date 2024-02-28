@@ -20,7 +20,6 @@ const AddPlayerGroup = () => {
       ...prevData,
       [name]: value,
     }));
-    console.log("handdleinput", inputData);
   };
 
   // Handle team selection separately
@@ -30,7 +29,6 @@ const AddPlayerGroup = () => {
       ...prevData,
       team: teamId,
     }));
-    console.log("handleTeamChange", inputData);
   };
 
   //Submit data
@@ -59,7 +57,6 @@ const AddPlayerGroup = () => {
     axios
       .get("http://localhost:4000/team/all")
       .then((response) => {
-        console.log(response.data.team);
         setTeams(response.data.team);
       })
       .catch((err) => console.log(err));

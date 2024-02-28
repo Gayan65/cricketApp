@@ -27,7 +27,6 @@ const AddTeamGroup = () => {
       .post("http://localhost:4000/team/create", data)
       .then((response) => {
         if (response.data.success) {
-          console.log(response.data);
           window.location.reload();
           alert(response.data.message);
         } else {
