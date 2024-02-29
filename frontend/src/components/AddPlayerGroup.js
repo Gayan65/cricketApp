@@ -38,7 +38,7 @@ const AddPlayerGroup = () => {
     event.preventDefault();
     const data = qs.stringify(inputData);
     await axios
-      .post("http://localhost:4000/player/create", data)
+      .post("https://cricketapp-xcw0.onrender.com/player/create", data)
       .then((response) => {
         window.location.reload();
         alert(response.data.message);
@@ -57,7 +57,7 @@ const AddPlayerGroup = () => {
   //Calling all the teams and players
   useEffect(() => {
     axios
-      .get("http://localhost:4000/team/all")
+      .get("https://cricketapp-xcw0.onrender.com/team/all")
       .then((response) => {
         setTeams(response.data.team);
       })

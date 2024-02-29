@@ -10,7 +10,7 @@ const AllTeam = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/team/all")
+      .get("https://cricketapp-xcw0.onrender.com/team/all")
       .then((response) => {
         console.log(response.data);
         setTeams(response.data.team);

@@ -11,7 +11,7 @@ const ExistingTeamGroup = () => {
   //Calling all the teams and players
   useEffect(() => {
     axios
-      .get("http://localhost:4000/team/all")
+      .get("https://cricketapp-xcw0.onrender.com/team/all")
       .then((response) => {
         setTeams(response.data.team);
       })

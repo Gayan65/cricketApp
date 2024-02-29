@@ -60,7 +60,8 @@ const Navigation = () => {
         </Tab>
         <Tab eventKey="public" title="Public">
           <Container className="mt-4">
-            In this segment, you have the ability to add new players.
+            In this segment, You can view the public access area, such as
+            reports and etc.
           </Container>
 
           {/* Public section start*/}

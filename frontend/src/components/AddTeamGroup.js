@@ -26,7 +26,7 @@ const AddTeamGroup = () => {
     event.preventDefault();
     const data = qs.stringify(inputData);
     await axios
-      .post("http://localhost:4000/team/create", data)
+      .post("https://cricketapp-xcw0.onrender.com/team/create", data)
       .then((response) => {
         if (response.data.success) {
           window.location.reload();

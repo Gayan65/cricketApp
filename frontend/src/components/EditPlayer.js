@@ -27,7 +27,10 @@ const EditPlayer = () => {
 
   const handleSubmit = () => {
     const data = qs.stringify(inputData);
-    axios.patch(`http://localhost:4000/player/update/${state}`, data);
+    axios.patch(
+      `https://cricketapp-xcw0.onrender.com/player/update/${state}`,
+      data
+    );
   };
 
   let user = sessionStorage.getItem("user_id");
@@ -37,7 +40,7 @@ const EditPlayer = () => {
     } else {
       if (state) {
         axios
-          .get(`http://localhost:4000/player/find/${state}`)
+          .get(`https://cricketapp-xcw0.onrender.com/player/find/${state}`)
           .then((response) => {
             setInputData(response.data.player);
           });

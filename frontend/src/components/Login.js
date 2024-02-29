@@ -35,7 +35,7 @@ const Login = () => {
     event.preventDefault();
     const data = qs.stringify(inputData);
     await axios
-      .post("http://localhost:4000/user/login", data)
+      .post("https://cricketapp-xcw0.onrender.com/user/login", data)
       .then((response) => {
         if (response.data.success) {
           sessionStorage.setItem("user_id", response.data.user._id);

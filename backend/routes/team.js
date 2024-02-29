@@ -19,7 +19,7 @@ team_router.post("/team/create", async (req, res) => {
     await team.save().then((team) => {
       return res.status(200).json({
         success: true,
-        message: `team add successfully !, `,
+        message: `team added successfully !, `,
       });
     });
   } catch (error) {

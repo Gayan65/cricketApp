@@ -5,7 +5,12 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import qs from "qs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPen,
+  faTrash,
+  faThumbsUp,
+  faThumbsDown,
+} from "@fortawesome/free-solid-svg-icons";
 
 const TeamPlayers = () => {
   const navigate = useNavigate();
@@ -15,7 +20,7 @@ const TeamPlayers = () => {
   //Delete function
   const handleDelete = (playerId) => {
     axios
-      .delete(`http://localhost:4000/player/delete/${playerId}`)
+      .delete(`https://cricketapp-xcw0.onrender.com/player/delete/${playerId}`)
       .then((response) => {
         window.location.reload();
         alert(response.data.message);
@@ -27,7 +32,7 @@ const TeamPlayers = () => {
   const handleTeamDelete = (teamId) => {
     console.log(teamId);
     axios
-      .delete(`http://localhost:4000/delete/team/${teamId}`)
+      .delete(`https://cricketapp-xcw0.onrender.com/delete/team/${teamId}`)
       .then((response) => {
         navigate("/home");
         alert(response.data.message);
@@ -42,7 +47,7 @@ const TeamPlayers = () => {
       register: true,
     });
     axios
-      .patch(`http://localhost:4000/team/update/${teamId}`, data)
+      .patch(`https://cricketapp-xcw0.onrender.com/team/update/${teamId}`, data)
       .then((response) => {
         setTeam((prevTeam) => ({ ...prevTeam, register: true }));
       })
@@ -55,12 +60,13 @@ const TeamPlayers = () => {
       navigate("/");
     } else {
       axios
-        .get(`http://localhost:4000/team/${state}`)
+        .get(`https://cricketapp-xcw0.onrender.com/team/${state}`)
         .then((response) => {
           setTeam(response.data.team[0]);
         })
         .catch((err) => console.log(err));
     }
+    // eslint-disable-next-line
   }, []);
   return (
     <Container className="mt-5">
@@ -68,8 +74,20 @@ const TeamPlayers = () => {
         <Card.Body>
           <Card.Title>{team && team.name}</Card.Title>
           <Card.Text>
-            Registration Status is the fees is{" "}
-            {team && (team.register ? "paid" : "not paid")}.
+            Registration Status :{" "}
+            {team &&
+              (team.register ? (
+                <span className="custom-font-good">
+                  <FontAwesomeIcon icon={faThumbsUp} />
+                  <span className="ms-2">Subscription paid</span>
+                </span>
+              ) : (
+                <span className="custom-font-bad">
+                  <FontAwesomeIcon icon={faThumbsDown} />
+                  <span className="ms-2">Subscription not paid</span>
+                </span>
+              ))}
+            .
           </Card.Text>
           <Table striped="columns">
             <thead>
