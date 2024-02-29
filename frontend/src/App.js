@@ -5,6 +5,7 @@ import Login from "./components/Login";
 import TeamPlayers from "./components/TeamPlayers";
 import EditPlayer from "./components/EditPlayer";
 import AllTeam from "./components/AllTeam";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/teams" element={<AllTeam />}></Route>
         </Routes>
       </BrowserRouter>
+      <Footer />
     </div>
   );
 }

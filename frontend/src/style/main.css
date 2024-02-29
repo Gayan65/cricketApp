@@ -1,0 +1,21 @@
+.custom-card {
+  border: none;
+}
+
+.custom-nav-bar {
+  background-color: #00013a;
+}
+
+.nav-brand {
+  color: #e7e721 !important;
+}
+
+.btn-primary {
+  background-color: #23aaca;
+  border: #23aaca solid 1px;
+}
+
+.btn-primary:hover {
+  background-color: #010039;
+  border: #010039 solid 1px;
+}

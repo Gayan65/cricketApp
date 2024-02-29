@@ -14,14 +14,18 @@ const Nav = () => {
     // eslint-disable-next-line
   }, [user]);
   return (
-    <Navbar bg="primary" data-bs-theme="light">
+    <Navbar className="custom-nav-bar">
       <Container>
-        <Navbar.Brand href="/home">PCC CRICKET BASHERS</Navbar.Brand>
+        <Navbar.Brand className="nav-brand" href="/home">
+          PCC CRICKET BASHERS
+        </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           {loggedIn && (
             <Navbar.Text>
-              <a href="/">Logout</a>
+              <a className="nav-brand" href="/">
+                Logout
+              </a>
             </Navbar.Text>
           )}
         </Navbar.Collapse>

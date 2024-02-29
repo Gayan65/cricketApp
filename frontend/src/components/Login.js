@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import qs from "qs";
 import { Form, Button, Container, Card, Alert } from "react-bootstrap";
+import logo from "../img/logo.png";
 
 const Login = () => {
   const [inputData, setInputData] = useState({
@@ -54,8 +55,13 @@ const Login = () => {
   return (
     <>
       <Container className=" mt-5 ">
-        <Card style={{ maxWidth: "40rem" }}>
+        <Card style={{ maxWidth: "30rem" }}>
           <Card.Body>
+            <Card.Img
+              variant="center"
+              src={logo}
+              style={{ maxWidth: "40rem" }}
+            />
             <Card.Title className="mb-4">Login</Card.Title>
             <Form method="POST" onSubmit={handleSubmit}>
               <Form.Group className="mb-3" controlId="formBasicEmail">
