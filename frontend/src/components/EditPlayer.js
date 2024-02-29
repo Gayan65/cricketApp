@@ -3,6 +3,8 @@ import qs from "qs";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Form, Card, Container, Button } from "react-bootstrap";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
 
 const EditPlayer = () => {
   const navigate = useNavigate();
@@ -59,6 +61,7 @@ const EditPlayer = () => {
                 onChange={handleInputChange}
                 name="name"
                 value={inputData.name}
+                required
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -69,6 +72,8 @@ const EditPlayer = () => {
                 onChange={handleInputChange}
                 name="mobile"
                 value={inputData.mobile}
+                pattern="[0-9]{10}"
+                title="Please enter 10 digits"
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -79,10 +84,12 @@ const EditPlayer = () => {
                 onChange={handleInputChange}
                 name="batch"
                 value={inputData.batch}
+                required
               />
             </Form.Group>
             <Button variant="success" type="submit">
-              Save
+              <FontAwesomeIcon icon={faFloppyDisk} />
+              <span className="ms-1">Save</span>
             </Button>
           </Form>
         </Card.Body>

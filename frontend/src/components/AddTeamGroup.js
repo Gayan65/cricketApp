@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import qs from "qs";
 import { Form, Button } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAddressCard } from "@fortawesome/free-solid-svg-icons";
 
 const AddTeamGroup = () => {
   const [inputData, setInputData] = useState({
@@ -68,7 +70,8 @@ const AddTeamGroup = () => {
         />
       </Form.Group>
       <Button variant="primary" type="submit">
-        Add
+        <FontAwesomeIcon icon={faAddressCard} />
+        <span className="ms-1">Add</span>
       </Button>
     </Form>
   );

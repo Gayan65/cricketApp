@@ -35,3 +35,11 @@
   background-color: #e7e721;
   border: #e7e721 solid 1px;
 }
+
+.custom-font-good {
+  color: #23aaca;
+}
+
+.custom-font-bad {
+  color: #f36525;
+}

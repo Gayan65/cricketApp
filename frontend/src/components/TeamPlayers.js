@@ -4,6 +4,8 @@ import { Table, Card, Container, Button, Accordion } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import qs from "qs";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const TeamPlayers = () => {
   const navigate = useNavigate();
@@ -94,7 +96,7 @@ const TeamPlayers = () => {
                         state={teamPlayer._id}
                         className="btn btn-warning"
                       >
-                        Edit
+                        <FontAwesomeIcon icon={faPen} />
                       </Link>
                     </td>
                     <td>
@@ -102,7 +104,7 @@ const TeamPlayers = () => {
                         variant="danger"
                         onClick={() => handleDelete(teamPlayer._id)}
                       >
-                        Delete
+                        <FontAwesomeIcon icon={faTrash} />
                       </Button>
                     </td>
                   </tr>

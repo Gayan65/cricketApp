@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import qs from "qs";
 import { Form, Button } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 
 const AddPlayerGroup = () => {
   const [inputData, setInputData] = useState({
@@ -71,6 +73,7 @@ const AddPlayerGroup = () => {
           onChange={handleInputChange}
           name="name"
           value={inputData.name}
+          required
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -80,7 +83,10 @@ const AddPlayerGroup = () => {
           placeholder="Player mobile here.."
           onChange={handleInputChange}
           name="mobile"
+          pattern="[0-9]{10}"
+          title="Please enter 10 digits"
           value={inputData.mobile}
+          required
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -91,6 +97,7 @@ const AddPlayerGroup = () => {
           onChange={handleInputChange}
           name="batch"
           value={inputData.batch}
+          required
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -99,6 +106,7 @@ const AddPlayerGroup = () => {
           aria-label="Default select example"
           onChange={handleTeamChange}
           name="team"
+          required
         >
           <option>No teams</option>
           {teams.length > 0 &&
@@ -110,7 +118,8 @@ const AddPlayerGroup = () => {
         </Form.Select>
       </Form.Group>
       <Button variant="primary" type="submit">
-        Add
+        <FontAwesomeIcon icon={faUserPlus} />
+        <span className="ms-1">Add</span>
       </Button>
     </Form>
   );

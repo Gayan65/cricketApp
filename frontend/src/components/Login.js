@@ -4,6 +4,8 @@ import axios from "axios";
 import qs from "qs";
 import { Form, Button, Container, Card, Alert } from "react-bootstrap";
 import logo from "../img/logo.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
 
 const Login = () => {
   const [inputData, setInputData] = useState({
@@ -65,7 +67,10 @@ const Login = () => {
             <Card.Title className="mb-4">Login</Card.Title>
             <Form method="POST" onSubmit={handleSubmit}>
               <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
+                <Form.Label>
+                  <FontAwesomeIcon icon={faEnvelope} />
+                  <span className="ms-1">Email</span>
+                </Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Enter email"
@@ -75,7 +80,10 @@ const Login = () => {
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
+                <Form.Label>
+                  <FontAwesomeIcon icon={faKey} />
+                  <span className="ms-1">Password</span>
+                </Form.Label>
                 <Form.Control
                   type="password"
                   placeholder="Password"

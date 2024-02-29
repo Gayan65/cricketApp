@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Badge, ListGroup } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 
 const ExistingTeamGroup = () => {
   const [teams, setTeams] = useState([]);
@@ -30,7 +32,17 @@ const ExistingTeamGroup = () => {
                   {team.name}
                 </Link>
               </div>
-              {team.register ? "Registered" : "Not Registered"}
+              {team.register ? (
+                <span className="custom-font-good">
+                  <FontAwesomeIcon icon={faThumbsUp} />
+                  <span className="ms-2">Subscription paid</span>
+                </span>
+              ) : (
+                <span className="custom-font-bad">
+                  <FontAwesomeIcon icon={faThumbsDown} />
+                  <span className="ms-2">Subscription not paid</span>
+                </span>
+              )}
             </div>
             <Badge bg="primary" pill>
               {team.player.length}
