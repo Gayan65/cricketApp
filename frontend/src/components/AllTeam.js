@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Container, Accordion, ListGroup } from "react-bootstrap";
+import { QRCodeSVG } from "qrcode.react";
+import { Container, Accordion, ListGroup, Card } from "react-bootstrap";
 
 const AllTeam = () => {
   const [teams, setTeams] = useState([]);
+
+  const currentUrl = window.location.href;
 
   useEffect(() => {
     axios
@@ -34,6 +37,20 @@ const AllTeam = () => {
               </Accordion.Body>
             </Accordion.Item>
           ))}
+      </Accordion>
+
+      <Accordion className="mt-5">
+        <Accordion.Item eventKey="0">
+          <Accordion.Header>QR Share</Accordion.Header>
+          <Accordion.Body>
+            <Card style={{ width: "18rem" }}>
+              <Card.Body>
+                <Card.Title>Scan Me..</Card.Title>
+                <QRCodeSVG value={currentUrl} size={256} />
+              </Card.Body>
+            </Card>
+          </Accordion.Body>
+        </Accordion.Item>
       </Accordion>
     </Container>
   );
