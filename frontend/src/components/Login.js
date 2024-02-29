@@ -72,7 +72,7 @@ const Login = () => {
                   <span className="ms-1">Email</span>
                 </Form.Label>
                 <Form.Control
-                  type="text"
+                  type="email"
                   placeholder="Enter email"
                   onChange={handleInputChange}
                   name="username"
