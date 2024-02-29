@@ -40,8 +40,8 @@ const AddPlayerGroup = () => {
     await axios
       .post("https://cricketapp-xcw0.onrender.com/player/create", data)
       .then((response) => {
-        window.location.reload();
         alert(response.data.message);
+        window.location.reload();
       })
       .catch((err) => alert("Team is not selected!"));
 

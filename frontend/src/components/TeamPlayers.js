@@ -22,8 +22,8 @@ const TeamPlayers = () => {
     axios
       .delete(`https://cricketapp-xcw0.onrender.com/player/delete/${playerId}`)
       .then((response) => {
-        window.location.reload();
         alert(response.data.message);
+        window.location.reload();
       })
       .catch((err) => console.log(err));
   };

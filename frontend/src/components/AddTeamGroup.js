@@ -29,8 +29,8 @@ const AddTeamGroup = () => {
       .post("https://cricketapp-xcw0.onrender.com/team/create", data)
       .then((response) => {
         if (response.data.success) {
-          window.location.reload();
           alert(response.data.message);
+          window.location.reload();
         } else {
         }
       })

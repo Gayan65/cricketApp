@@ -25,12 +25,18 @@ const EditPlayer = () => {
     }));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     const data = qs.stringify(inputData);
-    axios.patch(
-      `https://cricketapp-xcw0.onrender.com/player/update/${state}`,
-      data
-    );
+    await axios
+      .patch(
+        `https://cricketapp-xcw0.onrender.com/player/update/${state}`,
+        data
+      )
+      .then((response) => {
+        alert("Player updated successfully!");
+        navigate("/home");
+      });
   };
 
   let user = sessionStorage.getItem("user_id");
