@@ -89,7 +89,11 @@ const TeamPlayers = () => {
                     <td>{teamPlayer.mobile}</td>
                     <td>{teamPlayer.batch}</td>
                     <td>
-                      <Link to={"/player/edit"} state={teamPlayer._id}>
+                      <Link
+                        to={"/player/edit"}
+                        state={teamPlayer._id}
+                        className="btn btn-warning"
+                      >
                         Edit
                       </Link>
                     </td>
@@ -134,7 +138,7 @@ const TeamPlayers = () => {
             <div>
               {team && team.register === false && (
                 <Button
-                  variant="outline-success"
+                  variant="primary"
                   onClick={() => handleUpdateTeam(team._id)}
                   className="mt-3"
                 >

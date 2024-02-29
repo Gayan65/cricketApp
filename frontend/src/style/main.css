@@ -19,3 +19,19 @@
   background-color: #010039;
   border: #010039 solid 1px;
 }
+
+.btn-danger {
+  background-color: #f36525;
+  border: #f36525 solid 1px;
+}
+
+.btn-danger:hover {
+  background-color: #ffff;
+  color: #f36525;
+  border: #f36525 solid 1px;
+}
+
+.btn-warning {
+  background-color: #e7e721;
+  border: #e7e721 solid 1px;
+}
